@@ -13,8 +13,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "driver": "xcodebuild -project ./WebDriverAgent/WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'platform=iOS,id=00008020-0015744C2608003A' test",
-    "server": "appium server --base-path /wd/hub --allow-cors",
     "cashapp": "npx ts-node  --transpile-only ./index.ts"
   },
   "author": "",
