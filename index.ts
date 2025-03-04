@@ -30,7 +30,6 @@ const logger = winston.createLogger({
         new winston.transports.File({ filename: path.join(__dirname+'/logs/app.log') }) // Logs to a file
     ],
 });
-import { WebdriverIOConfig } from "@wdio/types/build/Capabilities";
 import axios from "axios"
 const capabilities = {
     "platformName": "iOS",
@@ -45,7 +44,7 @@ const wdOpts = {
     logLevel: "error",
     capabilities,
     path: '/wd/hub',
-} as WebdriverIOConfig;
+} 
 const RandomMax=(max:number):number=>{
     return Math.ceil(Math.random()*max)
 }
