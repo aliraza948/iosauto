@@ -1,6 +1,5 @@
-import { Action, Browser, remote,TouchActions } from "webdriverio"
+import { Browser, remote } from "webdriverio"
 
-import {Options} from "@wdio/types"
 import winston from 'winston'
 import path from 'path'
 import fs from "fs"
