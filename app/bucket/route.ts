@@ -5,13 +5,10 @@ import JSONBig from "json-bigint";
 import { BucketRequest, PageSize } from "../types";
 
 
-export const POST=async (req:Request,res:Response)=>{
+export const POST=async (req:Request)=>{
     try{
     
-        let body = "";
-        for await (const chunk of req.body ) {
-          body += new TextDecoder().decode(chunk, { stream: true });
-        }
+        let body = await req.text();
        body=JSON.parse(body) 
        //@ts-ignore
        const pge=body as BucketRequest
