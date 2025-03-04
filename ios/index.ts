@@ -78,7 +78,7 @@ async function runTest() {
       const pic=await driver.takeElementScreenshot(el.elementId)
       const name=await driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeStaticText)[1]').getText()
       logger.info(`before ${name}--number ${ny}`)
-      const r=/^[A-Za-z]/
+      const r=/^[A-Za-z]{2}/
       if(r.test(name.trim())){
       await axios.post('http://localhost:3000/bucket',{type:"insert",id:ny,name,image:pic})
       }
