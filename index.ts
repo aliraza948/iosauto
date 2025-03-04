@@ -94,7 +94,7 @@ async function runTest() {
         await elements.setValue(ny)
 
       }
-      await sleep(1000)
+      await sleep(2000)
       
       tr++
     }
