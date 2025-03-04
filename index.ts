@@ -4,7 +4,6 @@ import {Options} from "@wdio/types"
 import winston from 'winston'
 import path from 'path'
 import fs from "fs"
-import {Workbook} from "exceljs"
 import paparse from 'papaparse'
 import readline from 'readline'
 readline.emitKeypressEvents(process.stdin);
@@ -14,9 +13,6 @@ let data:{
     number:string,
     name:string
 }[]=[]
-const workbook=new Workbook()
-const worksheet=workbook.addWorksheet('Sheet1')
-// Listen for keypress
 
 
 
