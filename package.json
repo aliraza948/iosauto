@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "driver": "xcodebuild -project ./WebDriverAgent/WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'platform=iOS,id=00008020-0015744C2608003A' test",
+    "test":"xcrun simctl launch 00008020-0015744C2608003A com.apple.test.WebDriverAgentRunner.xctrunner",
     "server": "appium server --base-path /wd/hub --allow-cors",
     "start": "next start",
-    "cashapp": "npx ts-node  --transpile-only ./index.ts",
+    "cashapp": "node ./ios/srcy/index.js",
     "dev": "next dev --turbopack",
     "build": "next build",
+    "buildcashapp":"npx tsc -p ./ios",
     
     "lint": "next lint"
   },
