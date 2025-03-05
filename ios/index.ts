@@ -83,12 +83,13 @@ async function runTest() {
       if(r.test(name.trim())){
       const dt=await axios.post('http://localhost:3000/bucket',{type:"insert",id:ny,name,image:pic},{validateStatus(status) {
           return true
-      },})
+      },timeout:30000})
       if(dt.status==200){
         break
       }
+    }
       logger.error(`Retrying During push data`)
-      }}
+     }
       logger.info(`${name}--number ${ny}`)
         ny++
         await elements.clearValue()
