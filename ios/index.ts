@@ -79,9 +79,16 @@ async function runTest() {
       const name=await driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeStaticText)[1]').getText()
       logger.info(`before ${name}--number ${ny}`)
       const r=/^[A-Za-z]{2}/
+      while(true){
       if(r.test(name.trim())){
-      await axios.post('http://localhost:3000/bucket',{type:"insert",id:ny,name,image:pic})
+      const dt=await axios.post('http://localhost:3000/bucket',{type:"insert",id:ny,name,image:pic},{validateStatus(status) {
+          return true
+      },})
+      if(dt.status==200){
+        break
       }
+      logger.error(`Retrying During push data`)
+      }}
       logger.info(`${name}--number ${ny}`)
         ny++
         await elements.clearValue()
