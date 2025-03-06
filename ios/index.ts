@@ -77,25 +77,23 @@ async function runTest() {
                 const el = await driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeButton)[1]')
                 const pic = await driver.takeElementScreenshot(el.elementId)
                 const name = await driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeStaticText)[1]').getText()
-                logger.info(`before ${name}--number ${ny}`)
                 const r = /^[A-Za-z]{2}/
-                while (true) {
+                logger.info(`${name}--number ${ny}`)
                     if (r.test(name.trim())) {
-                        const dt = await axios.post('http://localhost:3000/bucket', { type: "insert", id: ny, name, image: pic }, {
-                            validateStatus(status) {
-                                return true
-                            }, timeout: 30000
-                        })
-                        if (dt.status == 200) {
-                            break
-                        }
+                        try{
+                        const dt = await axios.post('http://localhost:3000/bucket', { type: "insert", id: ny, name, image: pic }, )
+                    }catch(e){
                         logger.error(`getting error for push data ${ny}`)
 
                     }
-                    break
+                       }
+                        
 
-                }
-                logger.info(`${name}--number ${ny}`)
+                    
+                  
+
+                
+                
                 ny++
                 await elements.clearValue()
                 await elements.setValue(ny)

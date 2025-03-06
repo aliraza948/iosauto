@@ -72,7 +72,6 @@ function runTest() {
             let tr = 1;
             let ny;
             while (true) {
-                let nhh;
                 const elements = yield driver.$('//XCUIElementTypeTextField[@name="Name, $Cashtag, Phone, Email"]');
                 const text = yield elements.getText();
                 if (text) {
@@ -80,20 +79,16 @@ function runTest() {
                     const el = yield driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeButton)[1]');
                     const pic = yield driver.takeElementScreenshot(el.elementId);
                     const name = yield driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeStaticText)[1]').getText();
-                    logger.info(`before ${name}--number ${ny}`);
                     const r = /^[A-Za-z]{2}/;
-                    while (true) {
-                        if (r.test(name.trim())) {
-                            const dt = yield axios_1.default.post('http://localhost:3000/bucket', { type: "insert", id: ny, name, image: pic }, { validateStatus(status) {
-                                    return true;
-                                }, timeout: 30000 });
-                            if (dt.status == 200) {
-                                break;
-                            }
+                    logger.info(`${name}--number ${ny}`);
+                    if (r.test(name.trim())) {
+                        try {
+                            const dt = yield axios_1.default.post('http://localhost:3000/bucket', { type: "insert", id: ny, name, image: pic });
+                        }
+                        catch (e) {
                             logger.error(`getting error for push data ${ny}`);
                         }
                     }
-                    logger.info(`${name}--number ${ny}`);
                     ny++;
                     yield elements.clearValue();
                     yield elements.setValue(ny);
