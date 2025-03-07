@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const webdriverio_1 = require("webdriverio");
 const winston_1 = __importDefault(require("winston"));
 const path_1 = __importDefault(require("path"));
-const fs_1 = __importDefault(require("fs"));
 const papaparse_1 = __importDefault(require("papaparse"));
 const readline_1 = __importDefault(require("readline"));
 readline_1.default.emitKeypressEvents(process.stdin);
@@ -58,11 +57,11 @@ function sleep(ms) {
 function runTest() {
     return __awaiter(this, void 0, void 0, function* () {
         const driver = yield (0, webdriverio_1.remote)(wdOpts);
+        console.log(`Press 'Q' for Exit`);
         process.stdin.on("keypress", (str, key) => {
-            if (key.name === "j") {
-                console.log("\n'Q' key pressed. Exiting...");
+            if (key.name === "q") {
+                console.log(`It's exiting...`);
                 const csv = papaparse_1.default.unparse(data);
-                fs_1.default.writeFileSync("./data.csv", csv, "utf8");
                 process.exit(0);
             }
         });
@@ -77,13 +76,13 @@ function runTest() {
                 if (text) {
                     ny = Number(text);
                     const el = yield driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeButton)[1]');
-                    const pic = yield driver.takeElementScreenshot(el.elementId);
+                    const pic = yield driver.takeElementScreenshot((yield el.elementId));
                     const name = yield driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeStaticText)[1]').getText();
                     const r = /^[A-Za-z]{2}/;
                     logger.info(`${name}--number ${ny}`);
                     if (r.test(name.trim())) {
                         try {
-                            const dt = yield axios_1.default.post('http://localhost:3000/bucket', { type: "insert", id: ny, name, image: pic });
+                            const dt = yield axios_1.default.post('http://10.0.0.117:3000/bucket', { type: "insert", id: ny, name, image: pic });
                         }
                         catch (e) {
                             logger.error(`getting error for push data ${ny}`);

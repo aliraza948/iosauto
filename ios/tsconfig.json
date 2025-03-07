@@ -1,10 +1,9 @@
 {"include": ["*.ts"],
 "exclude": [
   "node_modules",
-  "./srcy"
 ],
   "compilerOptions": {
-    "outDir": "./srcy",
+    "outDir": "./",
     "rootDir": "./",
     /* Visit https://aka.ms/tsconfig to read more about this file */
 

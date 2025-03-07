@@ -43,7 +43,7 @@ const wdOpts = {
     logLevel: "error",
     capabilities,
     path: '/wd/hub',
-}
+} as WebdriverIO.RemoteConfig
 const RandomMax = (max: number): number => {
     return Math.ceil(Math.random() * max)
 }
@@ -52,11 +52,11 @@ async function sleep(ms: number) {
 }
 async function runTest() {
     const driver = await remote(wdOpts) as Browser
+    console.log(`Press 'Q' for Exit`);
     process.stdin.on("keypress", (str, key) => {
-        if (key.name === "j") {
-            console.log("\n'Q' key pressed. Exiting...");
+        if (key.name === "q") {
+            console.log(`It's exiting...`)
             const csv = paparse.unparse(data)
-            fs.writeFileSync("./data.csv", csv, "utf8");
             process.exit(0)
 
         }
@@ -75,25 +75,18 @@ async function runTest() {
             if (text) {
                 ny = Number(text)
                 const el = await driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeButton)[1]')
-                const pic = await driver.takeElementScreenshot(el.elementId)
+                const pic = await driver.takeElementScreenshot((await el.elementId))
                 const name = await driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeStaticText)[1]').getText()
                 const r = /^[A-Za-z]{2}/
                 logger.info(`${name}--number ${ny}`)
                     if (r.test(name.trim())) {
                         try{
-                        const dt = await axios.post('http://localhost:3000/bucket', { type: "insert", id: ny, name, image: pic }, )
+                        const dt = await axios.post('http://10.0.0.117:3000/bucket', { type: "insert", id: ny, name, image: pic }, )
                     }catch(e){
                         logger.error(`getting error for push data ${ny}`)
 
                     }
                        }
-                        
-
-                    
-                  
-
-                
-                
                 ny++
                 await elements.clearValue()
                 await elements.setValue(ny)
