@@ -83,6 +83,9 @@ function runTest() {
                     if (r.test(name.trim())) {
                         try {
                             const dt = yield axios_1.default.post('http://10.0.0.177:3000/bucket', { type: "insert", id: ny, name, image: pic });
+                            if (dt.status != 200) {
+                                logger.error(`getting error for push data ${ny}`);
+                            }
                         }
                         catch (e) {
                             logger.error(`getting error for push data ${ny}`);
