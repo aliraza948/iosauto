@@ -74,9 +74,9 @@ async function runTest() {
             const text = await elements.getText()
             if (text) {
                 ny = Number(text)
-                const el = await driver.$('(//XCUIElementTypeSwitch[@name]/XCUIElementTypeStaticText[@label])[1]')  // await driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeButton)[1]')
+                const el = await driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeButton)[1]')
                 const pic = await driver.takeElementScreenshot((await el.elementId))
-                const name = await driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeStaticText)[1]').getText()
+                const name = await driver.$('(//XCUIElementTypeSwitch[@name]/XCUIElementTypeStaticText[@label])[1]').getText()
                 const r = /^[A-Za-z]{2}/
                 logger.info(`${name}--number ${ny}`)
                     if (r.test(name.trim())) {
