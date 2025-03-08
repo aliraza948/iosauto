@@ -75,7 +75,7 @@ function runTest() {
                 const text = yield elements.getText();
                 if (text) {
                     ny = Number(text);
-                    const el = yield driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeButton)[1]');
+                    const el = yield driver.$('//XCUIElementTypeButton[@name="Tap Avatar"]'); // await driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeButton)[1]')
                     const pic = yield driver.takeElementScreenshot((yield el.elementId));
                     const name = yield driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeStaticText)[1]').getText();
                     const r = /^[A-Za-z]{2}/;
