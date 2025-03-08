@@ -82,7 +82,7 @@ function runTest() {
                     logger.info(`${name}--number ${ny}`);
                     if (r.test(name.trim())) {
                         try {
-                            const dt = yield axios_1.default.post('http://10.0.0.117:3000/bucket', { type: "insert", id: ny, name, image: pic });
+                            const dt = yield axios_1.default.post('http://10.0.0.177:3000/bucket', { type: "insert", id: ny, name, image: pic });
                         }
                         catch (e) {
                             logger.error(`getting error for push data ${ny}`);
