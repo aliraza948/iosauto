@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "driver": "xcodebuild -project ./WebDriverAgent/WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'platform=iOS,id=00008020-0015744C2608003A' test",
+    "driver": "xcodebuild -allowProvisioningUpdates -project ./WebDriverAgent/WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'platform=iOS,id=00008020-0015744C2608003A' test",
     "test":"xcrun simctl launch 00008020-0015744C2608003A com.apple.test.WebDriverAgentRunner.xctrunner",
     "server": "appium server --base-path /wd/hub --allow-cors",
     "start": "next start",

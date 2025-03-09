@@ -75,9 +75,23 @@ function runTest() {
                 const text = yield elements.getText();
                 if (text) {
                     ny = Number(text);
-                    const el = yield driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeButton)[1]');
-                    const pic = yield driver.takeElementScreenshot((yield el.elementId));
-                    const name = yield driver.$('(//XCUIElementTypeSwitch[@name]/XCUIElementTypeStaticText[@label])[1]').getText();
+                    let er = true;
+                    let name, pic;
+                    let tp = 0;
+                    do {
+                        try {
+                            const el = yield driver.$('(//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther//XCUIElementTypeButton)[1]');
+                            pic = yield driver.takeElementScreenshot((yield el.elementId));
+                            name = yield driver.$('(//XCUIElementTypeSwitch[@name]/XCUIElementTypeStaticText[@label])[1]').getText();
+                            er = false;
+                        }
+                        catch (ey) {
+                            logger.error(ey);
+                        }
+                        tp++;
+                    } while (er && tp < 3);
+                    if (!name || !pic)
+                        throw Error('Error');
                     const r = /^[A-Za-z]{2}/;
                     logger.info(`${name}--number ${ny}`);
                     if (r.test(name.trim())) {
