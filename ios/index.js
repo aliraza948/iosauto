@@ -93,7 +93,10 @@ function runTest() {
                     }
                     ny++;
                     yield elements.clearValue();
-                    yield elements.setValue(ny);
+                    for (const xy of ny.toString().split("")) {
+                        yield elements.sendKeys([xy]);
+                        yield sleep(300);
+                    }
                 }
                 yield sleep(10000);
                 tr++;
