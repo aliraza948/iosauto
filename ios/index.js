@@ -95,7 +95,7 @@ function runTest() {
                     yield elements.clearValue();
                     yield elements.setValue(ny);
                 }
-                yield sleep(2000);
+                yield sleep(10000);
                 tr++;
             }
             //    const el=await driver.$('//androidx.recyclerview.widget.RecyclerView[@resource-id="com.android.settings:id/recycler_view"]')
