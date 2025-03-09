@@ -92,7 +92,11 @@ async function runTest() {
                        }
                 ny++
                 await elements.clearValue()
-                await elements.setValue(ny)
+                for(const xy of ny.toString().split("")){
+                    await elements.sendKeys([xy])
+                    await sleep(300)
+                }
+                
 
             }
             await sleep(10000)
