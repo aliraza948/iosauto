@@ -8,6 +8,7 @@
     "server": "appium server --base-path /wd/hub --allow-cors",
     "start": "next start",
     "cashapp": "node ./ios/index.js",
+    "bof":"node ./ios/bof.js",
     "dev": "next dev --turbopack",
     "build": "next build",
     "buildcashapp":"npx tsc -p ./ios",
