@@ -17,6 +17,7 @@ logs
 # next.js
 /.next/
 /out/
+WebDriverAgent
 
 # production
 /build
