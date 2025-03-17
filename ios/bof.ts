@@ -80,29 +80,29 @@ async function Android() {
         logger.info(`Starting`)
         let tr=1
         while (true){
-       const elements=await  driver.$$('//XCUIElementTypeOther[contains(@name,"Zelle:Recipients")]')
+       const elements=await  driver.$$('(//XCUIElementTypeStaticText[1]/XCUIElementTypeStaticText)')
         
         //@ts-ignore 
-        for (let i = 4; i < elements.length - 5; i++) {
+        for (let i = 3; i < elements.length - 4; i++) {
             await driver.hideKeyboard()
-        //  const txt = await elements[i].$('(//android.widget.TextView)[2]').getText();
-        //  const elemId = elements[i].elementId; // Store unique element ID
+         const txt = await elements[i].getText();
+         const elemId = elements[i].elementId; // Store unique element ID
  
-        //  if (ids.has(txt)) {
-        //      logger.info(`Skipping duplicate: ${txt}`);
-        //      if(tr>3){
-        //          logger.info(`it's done`)
-        //          process.exit(0)
+         if (ids.has(txt)) {
+             logger.info(`Skipping duplicate: ${txt}`);
+             if(tr>3){
+                 logger.info(`it's done`)
+                 process.exit(0)
                  
-        //      }
-        //      tr++
-        //      continue;
-        //  }
+             }
+             tr++
+             continue;
+         }
  
-         logger.info(`Processing ${i}/${elements.length}: `);
+         logger.info(`Processing ${i}/${elements.length}: ${txt}`);
  
          await elements[i].click();
-        // ids.add(txt)
+         ids.add(txt)
         
          tr=1
          await sleep(1200);
