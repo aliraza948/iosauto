@@ -83,7 +83,7 @@ async function Android() {
        const elements=await  driver.$$('//XCUIElementTypeOther[contains(@name,"Zelle:Recipients")]')
         
         //@ts-ignore 
-        for (let i = 4; i < elements.length - 2; i++) {
+        for (let i = 4; i < elements.length - 5; i++) {
             await driver.hideKeyboard()
         //  const txt = await elements[i].$('(//android.widget.TextView)[2]').getText();
         //  const elemId = elements[i].elementId; // Store unique element ID
