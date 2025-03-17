@@ -85,24 +85,24 @@ async function Android() {
         //@ts-ignore 
         for (let i = 4; i < elements.length - 2; i++) {
             await driver.hideKeyboard()
-         const txt = await elements[i].$('(//android.widget.TextView)[2]').getText();
-         const elemId = elements[i].elementId; // Store unique element ID
+        //  const txt = await elements[i].$('(//android.widget.TextView)[2]').getText();
+        //  const elemId = elements[i].elementId; // Store unique element ID
  
-         if (ids.has(txt)) {
-             logger.info(`Skipping duplicate: ${txt}`);
-             if(tr>3){
-                 logger.info(`it's done`)
-                 process.exit(0)
+        //  if (ids.has(txt)) {
+        //      logger.info(`Skipping duplicate: ${txt}`);
+        //      if(tr>3){
+        //          logger.info(`it's done`)
+        //          process.exit(0)
                  
-             }
-             tr++
-             continue;
-         }
+        //      }
+        //      tr++
+        //      continue;
+        //  }
  
-         logger.info(`Processing ${i}/${elements.length}: ${txt}`);
+         logger.info(`Processing ${i}/${elements.length}: `);
  
          await elements[i].click();
-         ids.add(txt)
+        // ids.add(txt)
         
          tr=1
          await sleep(1200);

@@ -86,20 +86,20 @@ function Android() {
                 //@ts-ignore 
                 for (let i = 4; i < elements.length - 2; i++) {
                     yield driver.hideKeyboard();
-                    const txt = yield elements[i].$('(//android.widget.TextView)[2]').getText();
-                    const elemId = elements[i].elementId; // Store unique element ID
-                    if (ids.has(txt)) {
-                        logger.info(`Skipping duplicate: ${txt}`);
-                        if (tr > 3) {
-                            logger.info(`it's done`);
-                            process.exit(0);
-                        }
-                        tr++;
-                        continue;
-                    }
-                    logger.info(`Processing ${i}/${elements.length}: ${txt}`);
+                    //  const txt = await elements[i].$('(//android.widget.TextView)[2]').getText();
+                    //  const elemId = elements[i].elementId; // Store unique element ID
+                    //  if (ids.has(txt)) {
+                    //      logger.info(`Skipping duplicate: ${txt}`);
+                    //      if(tr>3){
+                    //          logger.info(`it's done`)
+                    //          process.exit(0)
+                    //      }
+                    //      tr++
+                    //      continue;
+                    //  }
+                    logger.info(`Processing ${i}/${elements.length}: `);
                     yield elements[i].click();
-                    ids.add(txt);
+                    // ids.add(txt)
                     tr = 1;
                     yield sleep(1200);
                     try {
