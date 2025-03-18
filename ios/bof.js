@@ -128,17 +128,17 @@ function Android() {
                 //     height: -400, // Move up by 400 pixels (adjust for scroll distance)
                 //     duration: 1000 // Milliseconds (smoother swipe)
                 //   });
-                //  await driver.execute('mobile: touchAndDrag', {
-                //     startX: 500, // Start position (adjust as needed)
-                //     startY: 500,
-                //     endX: 500,   // Keep same X to ensure vertical movement
-                //     endY: 300,   // End position (controls scroll amount)
-                //     duration: 1000 // Duration in ms (smooth scroll)
-                //   });
-                yield driver.execute('mobile: scroll', {
-                    direction: 'up',
-                    percent: 0.5, // 1.0 = full screen scroll, 0.5 = half screen
+                yield driver.execute('mobile: touchAndDrag', {
+                    startX: 185, // Start position (adjust as needed)
+                    startY: 600,
+                    endX: 185, // Keep same X to ensure vertical movement
+                    endY: 385, // End position (controls scroll amount)
+                    duration: 1000 // Duration in ms (smooth scroll)
                 });
+                //   await driver.execute('mobile: scroll', {
+                //     direction: 'up',
+                //     percent: 0.5, // 1.0 = full screen scroll, 0.5 = half screen
+                //   });
                 //     await driver.performActions([
                 //      {
                 //        type: "pointer",
