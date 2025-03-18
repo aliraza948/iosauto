@@ -113,25 +113,28 @@ function Android() {
                         data.push({ name: d });
                         loggerf.info(`name:${d}-- `);
                         //  }
+                        if (isText) {
+                            yield driver.back();
+                        }
                     }
                     catch (e) { }
-                    yield driver.back();
                     yield sleep(1000); // Ensure page refresh
                 }
-                yield driver.performActions([
-                    {
-                        type: "pointer",
-                        id: "touch", // Unique identifier
-                        parameters: { pointerType: "touch" }, // Required for touch events
-                        actions: [
-                            { type: "pointerMove", duration: 0, x: 500, y: 800 }, // Move to start
-                            { type: "pointerDown" }, // Touch press
-                            { type: "pause", duration: 500 }, // Short delay
-                            { type: "pointerMove", duration: 1000, x: 500, y: 300 }, // Drag/swipe
-                            { type: "pointerUp" }, // Release
-                        ],
-                    },
-                ]);
+                yield driver.execute('mobile: swipe', { direction: 'up' });
+                //     await driver.performActions([
+                //      {
+                //        type: "pointer",
+                //        id: "touch", // Unique identifier
+                //        parameters: { pointerType: "touch" }, // Required for touch events
+                //        actions: [
+                //          { type: "pointerMove", duration: 0, x: 500, y: 800 }, // Move to start
+                //          { type: "pointerDown" }, // Touch press
+                //          { type: "pause", duration: 500 }, // Short delay
+                //          { type: "pointerMove", duration: 1000, x: 500, y:300 }, // Drag/swipe
+                //          { type: "pointerUp" }, // Release
+                //        ],
+                //      },
+                //    ]);
             }
         }
         catch (e) {

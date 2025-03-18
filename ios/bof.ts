@@ -116,25 +116,29 @@ async function Android() {
         data.push({name:d})
              loggerf.info(`name:${d}-- `)
         //  }
+        if(isText){
+            await driver.back()
+        }
         }catch(e){}
     
-         await driver.back()
+         
          await sleep(1000); // Ensure page refresh
      }
-        await driver.performActions([
-         {
-           type: "pointer",
-           id: "touch", // Unique identifier
-           parameters: { pointerType: "touch" }, // Required for touch events
-           actions: [
-             { type: "pointerMove", duration: 0, x: 500, y: 800 }, // Move to start
-             { type: "pointerDown" }, // Touch press
-             { type: "pause", duration: 500 }, // Short delay
-             { type: "pointerMove", duration: 1000, x: 500, y:300 }, // Drag/swipe
-             { type: "pointerUp" }, // Release
-           ],
-         },
-       ]);
+     await driver.execute('mobile: swipe', { direction: 'up' });
+    //     await driver.performActions([
+    //      {
+    //        type: "pointer",
+    //        id: "touch", // Unique identifier
+    //        parameters: { pointerType: "touch" }, // Required for touch events
+    //        actions: [
+    //          { type: "pointerMove", duration: 0, x: 500, y: 800 }, // Move to start
+    //          { type: "pointerDown" }, // Touch press
+    //          { type: "pause", duration: 500 }, // Short delay
+    //          { type: "pointerMove", duration: 1000, x: 500, y:300 }, // Drag/swipe
+    //          { type: "pointerUp" }, // Release
+    //        ],
+    //      },
+    //    ]);
        
     }}catch(e){
         
