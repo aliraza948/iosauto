@@ -121,13 +121,19 @@ function Android() {
                     yield sleep(1000); // Ensure page refresh
                 }
                 //  await driver.execute('mobile: swipe', { direction: 'up',percentage: 0.50 });
-                yield driver.execute('mobile: swipe', {
-                    left: 185, // X coordinate (center of screen)
-                    top: 600, // Start Y (bottom of screen)
-                    width: 0, // No horizontal movement
-                    height: -300, // Move up by 400 pixels (adjust for scroll distance)
-                    duration: 1000 // Milliseconds (smoother swipe)
-                });
+                //  await driver.execute('mobile: swipe', {
+                //     left: 185, // X coordinate (center of screen)
+                //     top: 600,  // Start Y (bottom of screen)
+                //     width: 0,  // No horizontal movement
+                //     height: -300, // Move up by 400 pixels (adjust for scroll distance)
+                //     duration: 1000 // Milliseconds (smoother swipe)
+                //   });
+                yield driver.action('pointer')
+                    .move({ duration: 0, x: 177, y: 704 })
+                    .down({ button: 0 })
+                    .move({ duration: 1000, x: 182, y: 395 })
+                    .up({ button: 0 })
+                    .perform();
                 //  await driver.execute('mobile: touchAndDrag', {
                 //     startX: 185, // Start position (adjust as needed)
                 //     startY: 600,
