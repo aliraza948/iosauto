@@ -109,9 +109,9 @@ function Android() {
                         //     const seq=await driver.$(`((//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.infonow.bofa:id/screen_zelle_pay_home_recipient_right_element_text"])//android.widget.TextView)[1]`).getText()
                         //     const num=await driver.$(`((//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.infonow.bofa:id/screen_zelle_pay_home_recipient_right_element_text"])//android.widget.TextView)[2]`).getText()
                         //     const name=await driver.$(`((//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.infonow.bofa:id/screen_zelle_pay_home_recipient_right_element_text"])//android.widget.TextView)[3]`).getText()
-                        const d = yield isText.getText();
+                        const d = yield yield driver.executeScript("return arguments[0].textContent;", [isText]); //isText.getText()     
                         data.push({ name: d });
-                        loggerf.info(`name:${d}-- ${d}`);
+                        loggerf.info(`name:${d}--`);
                         //  }
                         if (isText) {
                             yield driver.back();
