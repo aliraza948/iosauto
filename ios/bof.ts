@@ -133,9 +133,9 @@ async function Android() {
     //     duration: 1000 // Milliseconds (smoother swipe)
     //   });
       await driver.action('pointer')
-  .move({ duration: 0, x: 177, y: 704 })
+  .move({ duration: 0, x: 177, y: 604 })
   .down({ button: 0 })
-  .move({ duration: 1000, x: 182, y: 395 })
+  .move({ duration: 1000, x: 182, y: 385 })
   .up({ button: 0 })
   .perform();
 
