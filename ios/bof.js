@@ -111,7 +111,7 @@ function Android() {
                         //     const name=await driver.$(`((//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.infonow.bofa:id/screen_zelle_pay_home_recipient_right_element_text"])//android.widget.TextView)[3]`).getText()
                         const d = yield isText.getText();
                         data.push({ name: d });
-                        loggerf.info(`name:${d}-- `);
+                        loggerf.info(`name:${d}-- ${d}`);
                         //  }
                         if (isText) {
                             yield driver.back();
