@@ -124,7 +124,7 @@ async function Android() {
          
          await sleep(1000); // Ensure page refresh
      }
-      await driver.execute('mobile: swipe', { direction: 'up',percentage: 0.75 });
+      await driver.execute('mobile: swipe', { direction: 'up',percentage: 0.50 });
     //  await driver.execute('mobile: swipe', {
     //     left: 500, // X coordinate (center of screen)
     //     top: 800,  // Start Y (bottom of screen)

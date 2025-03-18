@@ -120,7 +120,7 @@ function Android() {
                     catch (e) { }
                     yield sleep(1000); // Ensure page refresh
                 }
-                yield driver.execute('mobile: swipe', { direction: 'up', percentage: 0.75 });
+                yield driver.execute('mobile: swipe', { direction: 'up', percentage: 0.50 });
                 //  await driver.execute('mobile: swipe', {
                 //     left: 500, // X coordinate (center of screen)
                 //     top: 800,  // Start Y (bottom of screen)
