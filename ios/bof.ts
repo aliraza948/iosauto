@@ -124,7 +124,7 @@ async function Android() {
          
          await sleep(1000); // Ensure page refresh
      }
-     await driver.execute('mobile: swipe', { direction: 'up',percentage: 0.5 });
+     await driver.execute('mobile: swipe', { direction: 'up',percentage: 0.75 });
     //  await driver.execute('mobile: touchAndDrag', {
     //     startX: 500, // Start position (adjust as needed)
     //     startY: 500,
