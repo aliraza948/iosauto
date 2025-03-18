@@ -110,7 +110,7 @@ function Android() {
                         //     const num=await driver.$(`((//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.infonow.bofa:id/screen_zelle_pay_home_recipient_right_element_text"])//android.widget.TextView)[2]`).getText()
                         //     const name=await driver.$(`((//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.infonow.bofa:id/screen_zelle_pay_home_recipient_right_element_text"])//android.widget.TextView)[3]`).getText()
                         //const d= await driver.executeScript("return arguments[0].textContent;", [isText]);//isText.getText()     
-                        const pn = yield driver.takeElementScreenshot(yield isText.elementId);
+                        const pn = yield driver.takeElementScreenshot(isText.elementId);
                         fs_1.default.writeFileSync('./ur/element_screenshot.png', pn, 'base64');
                         //  data.push({name:d})
                         //     loggerf.info(`name:${d}--`)

@@ -106,8 +106,8 @@ async function Android() {
         
          tr=1
          await sleep(1200);
-     try{    const isText=await driver.$(`//XCUIElementTypeCell[@name]/XCUIElementTypeOther[4]`)
-
+     try{   
+         const isText=await driver.$(`//XCUIElementTypeCell[@name]/XCUIElementTypeOther[4]`)
         //  if(isNext){
         //     await isNext.click()
         //     const seq=await driver.$(`((//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.infonow.bofa:id/screen_zelle_pay_home_recipient_right_element_text"])//android.widget.TextView)[1]`).getText()
@@ -115,7 +115,7 @@ async function Android() {
         //     const name=await driver.$(`((//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.infonow.bofa:id/screen_zelle_pay_home_recipient_right_element_text"])//android.widget.TextView)[3]`).getText()
         
         //const d= await driver.executeScript("return arguments[0].textContent;", [isText]);//isText.getText()     
-        const pn=await driver.takeElementScreenshot( await isText.elementId)
+        const pn=await driver.takeElementScreenshot( isText.elementId)
         fs.writeFileSync('./ur/element_screenshot.png',pn,'base64');
       //  data.push({name:d})
         //     loggerf.info(`name:${d}--`)
