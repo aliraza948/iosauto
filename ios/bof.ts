@@ -58,9 +58,15 @@ async function sleep(ms:number) {
     return new Promise(r=>setTimeout(r,ms))
 }
 async function Android() {
-   
+    console.log(`Press "j" for export or "q" for export and exit`)
     const driver=await remote(wdOpts)
     process.stdin.on("keypress",async (str, key) => {
+        if(key.name==="j"){
+            const csv=paparse.unparse(data)
+            console.log(`Exporting... `)
+            fs.writeFileSync("./data.csv", csv, "utf8");
+            
+        }
         if(key.name==="q"){
             const csv=paparse.unparse(data)
             console.log(`Exporting... `)

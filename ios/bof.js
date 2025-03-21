@@ -62,8 +62,14 @@ function sleep(ms) {
 }
 function Android() {
     return __awaiter(this, void 0, void 0, function* () {
+        console.log(`Press "j" for export or "q" for export and exit`);
         const driver = yield (0, webdriverio_1.remote)(wdOpts);
         process.stdin.on("keypress", (str, key) => __awaiter(this, void 0, void 0, function* () {
+            if (key.name === "j") {
+                const csv = papaparse_1.default.unparse(data);
+                console.log(`Exporting... `);
+                fs_1.default.writeFileSync("./data.csv", csv, "utf8");
+            }
             if (key.name === "q") {
                 const csv = papaparse_1.default.unparse(data);
                 console.log(`Exporting... `);
