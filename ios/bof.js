@@ -43,7 +43,7 @@ const loggerf = winston_1.default.createLogger({
 });
 const cap = {
     "platformName": "iOS",
-    "appium:wdaBaseUrl": "http://10.0.0.77",
+    "appium:wdaBaseUrl": "http://10.0.0.28",
     "appium:wdaLocalPort": 8100,
     "appium:automationName": "XCUITest",
     "appium:udid": "00008110-0001048E2E6B801E"
