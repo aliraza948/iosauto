@@ -119,8 +119,9 @@ async function Android() {
         const pn=await driver.takeElementScreenshot( isText.elementId)
         fs.writeFileSync('./sm.png',pn,'base64')
         const dt=await tesser.recognize('./sm.png',{psm:3,oem:1,lang:"eng"})
+        let t=dt.split('\n')
         
-      //  data.push({name:d})
+        data.push({number:t[1],name:(t[3]+t[4]).split('as')[1]})
         //     loggerf.info(`name:${d}--`)
         //  }
         if(isText){
