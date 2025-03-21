@@ -112,7 +112,8 @@ function Android() {
                         //     const name=await driver.$(`((//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.infonow.bofa:id/screen_zelle_pay_home_recipient_right_element_text"])//android.widget.TextView)[3]`).getText()
                         //const d= await driver.executeScript("return arguments[0].textContent;", [isText]);//isText.getText()     
                         const pn = yield driver.takeElementScreenshot(isText.elementId);
-                        const dt = yield node_tesseract_ocr_1.default.recognize(pn, { psm: 3, oem: 1, lang: "eng" });
+                        fs_1.default.writeFileSync('./sm.png', pn, 'base64');
+                        const dt = yield node_tesseract_ocr_1.default.recognize('./sm.png', { psm: 3, oem: 1, lang: "eng" });
                         //  data.push({name:d})
                         //     loggerf.info(`name:${d}--`)
                         //  }
