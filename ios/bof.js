@@ -115,7 +115,7 @@ function Android() {
                         fs_1.default.writeFileSync('./sm.png', pn, 'base64');
                         const dt = yield node_tesseract_ocr_1.default.recognize('./sm.png', { psm: 3, oem: 1, lang: "eng" });
                         let t = dt.split('\n');
-                        data.push({ number: t[1], name: (t[3] + t[4]).split('as')[1] });
+                        data.push({ number: t[1], name: (t[3] + ' ' + t[4]).split('as')[1] });
                         //     loggerf.info(`name:${d}--`)
                         //  }
                         if (isText) {
