@@ -120,7 +120,9 @@ function Android() {
                             yield driver.back();
                         }
                     }
-                    catch (e) { }
+                    catch (e) {
+                        let c = e;
+                    }
                     yield sleep(1000); // Ensure page refresh
                 }
                 //  await driver.execute('mobile: swipe', { direction: 'up',percentage: 0.50 });

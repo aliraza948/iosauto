@@ -125,7 +125,9 @@ async function Android() {
         if(isText){
             await driver.back()
         }
-        }catch(e){}
+        }catch(e){
+            let c=e
+        }
     
          
          await sleep(1000); // Ensure page refresh
