@@ -63,18 +63,13 @@ async function Android() {
     process.stdin.on("keypress",async (str, key) => {
         if(key.name==="q"){
             const csv=paparse.unparse(data)
+            console.log(`Exporting... `)
             fs.writeFileSync("./data.csv", csv, "utf8");
             await driver.deleteSession()
-            console.log("Exit");
+            console.log("Exited");
             process.exit(0)
         }
-        if (key.name === "j") {
-          console.log("Exporting..");
-          const csv=paparse.unparse(data)
-          fs.writeFileSync("./data.csv", csv, "utf8");
-          console.log("Export done");
-          
-        }
+       
       });
     try{
         let ids=new Set()
@@ -121,7 +116,7 @@ async function Android() {
         const dt=await tesser.recognize('./sm.png',{psm:3,oem:1,lang:"eng"})
         let t=dt.split('\n')
         
-        data.push({number:t[1],name:(t[3]+' '+t[4]).split('as')[1]})
+        data.push({number:t[1],name:(`${t[3]} ${t[t.length]}`).split('as')[1]})
         //     loggerf.info(`name:${d}--`)
         //  }
         if(isText){

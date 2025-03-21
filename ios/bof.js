@@ -66,16 +66,11 @@ function Android() {
         process.stdin.on("keypress", (str, key) => __awaiter(this, void 0, void 0, function* () {
             if (key.name === "q") {
                 const csv = papaparse_1.default.unparse(data);
+                console.log(`Exporting... `);
                 fs_1.default.writeFileSync("./data.csv", csv, "utf8");
                 yield driver.deleteSession();
-                console.log("Exit");
+                console.log("Exited");
                 process.exit(0);
-            }
-            if (key.name === "j") {
-                console.log("Exporting..");
-                const csv = papaparse_1.default.unparse(data);
-                fs_1.default.writeFileSync("./data.csv", csv, "utf8");
-                console.log("Export done");
             }
         }));
         try {
@@ -115,7 +110,7 @@ function Android() {
                         fs_1.default.writeFileSync('./sm.png', pn, 'base64');
                         const dt = yield node_tesseract_ocr_1.default.recognize('./sm.png', { psm: 3, oem: 1, lang: "eng" });
                         let t = dt.split('\n');
-                        data.push({ number: t[1], name: (t[3] + ' ' + t[4]).split('as')[1] });
+                        data.push({ number: t[1], name: (`${t[3]} ${t[t.length]}`).split('as')[1] });
                         //     loggerf.info(`name:${d}--`)
                         //  }
                         if (isText) {
