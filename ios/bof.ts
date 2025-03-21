@@ -4,6 +4,7 @@ import path from 'path'
 import fs from "fs"
 import paparse from 'papaparse'
 import readline from 'readline'
+import tesser from 'node-tesseract-ocr'
 readline.emitKeypressEvents(process.stdin);
 process.stdin.setRawMode(true);
 let data:{
@@ -116,7 +117,8 @@ async function Android() {
         
         //const d= await driver.executeScript("return arguments[0].textContent;", [isText]);//isText.getText()     
         const pn=await driver.takeElementScreenshot( isText.elementId)
-        fs.writeFileSync('./ur/element_screenshot.png',pn,'base64');
+        const dt=await tesser.recognize(pn,{psm:3,oem:1,lang:"eng"})
+        
       //  data.push({name:d})
         //     loggerf.info(`name:${d}--`)
         //  }

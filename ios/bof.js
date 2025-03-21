@@ -18,6 +18,7 @@ const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
 const papaparse_1 = __importDefault(require("papaparse"));
 const readline_1 = __importDefault(require("readline"));
+const node_tesseract_ocr_1 = __importDefault(require("node-tesseract-ocr"));
 readline_1.default.emitKeypressEvents(process.stdin);
 process.stdin.setRawMode(true);
 let data = [];
@@ -111,7 +112,7 @@ function Android() {
                         //     const name=await driver.$(`((//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.infonow.bofa:id/screen_zelle_pay_home_recipient_right_element_text"])//android.widget.TextView)[3]`).getText()
                         //const d= await driver.executeScript("return arguments[0].textContent;", [isText]);//isText.getText()     
                         const pn = yield driver.takeElementScreenshot(isText.elementId);
-                        fs_1.default.writeFileSync('./ur/element_screenshot.png', pn, 'base64');
+                        const dt = yield node_tesseract_ocr_1.default.recognize(pn, { psm: 3, oem: 1, lang: "eng" });
                         //  data.push({name:d})
                         //     loggerf.info(`name:${d}--`)
                         //  }
