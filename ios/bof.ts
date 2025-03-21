@@ -116,7 +116,7 @@ async function Android() {
         const dt=await tesser.recognize('./sm.png',{psm:3,oem:1,lang:"eng"})
         let t=dt.split('\n')
         
-        data.push({number:t[1],name:(`${t[3]} ${t[t.length]}`).split('as')[1]})
+        data.push({number:t[1],name:`${t[3]} ${t[t.length]}`.split('as')[1]})
         //     loggerf.info(`name:${d}--`)
         //  }
         if(isText){
